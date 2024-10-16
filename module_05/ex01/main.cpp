@@ -6,11 +6,12 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:58:30 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/16 13:49:19 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/16 17:25:33 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include "GradeTooHighException.hpp"
 #include "GradeTooLowException.hpp"
 
@@ -18,16 +19,16 @@ int	main()
 {
 	try 
 	{
-		Bureaucrat Bob("Bob", 151);
-		Bureaucrat Bot("Bot", 0);
+		Bureaucrat Bob("Bob", 2);
+		Bureaucrat Bot("Bot", 5);
+		Form form1("b52", false, 10, 0);
 
-		// Bob.setGrade(-1);
-		// Bob.setGrade(160);
-		// std::cout << Bob;
-		// Bob.decrementGrade();
 		std::cout << Bot;
-		Bot.incrementGrade();
-		std::cout << Bot;
+		std::cout << Bob;
+		std::cout << form1;
+		// form1.beSigned(Bob);
+		Bob.signForm(form1);
+		std::cout << form1;
 	}
 	catch (GradeTooHighException& e)
 	{

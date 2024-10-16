@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:52:28 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/16 13:48:50 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/16 18:09:14 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,14 @@ void		Bureaucrat::setGrade(int newGrade)
 		throw GradeTooLowException("Grade exceeds 150");
 	else if (grade < 0)
 		throw GradeTooHighException("Grade below 0");
+}
+
+void	Bureaucrat::signForm(const AForm& form) 
+{
+	if (form.getAIsSigned() == true)
+		std::cout << name << " has signed form " << form.getAName() << std::endl;
+	else
+		std::cout << name << " hasn't signed form " << form.getAName() << " because of reasons\n";
 }
 
 std::ostream& operator<<(std::ostream& stream, const Bureaucrat& bureaucrat)

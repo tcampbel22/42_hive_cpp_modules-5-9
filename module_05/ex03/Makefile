@@ -6,7 +6,7 @@ FLAGS	:= -Wextra -Wall -Werror
 OBJ_DIR := Objects
 
 SRCS	:= main.cpp Bureaucrat.cpp GradeTooHighException.cpp GradeTooLowException.cpp AForm.cpp ShrubberyCreationForm.cpp \
-			RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+			RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp
 		
 OBJS	:= $(addprefix $(OBJ_DIR)/, ${SRCS:.cpp=.o})
 

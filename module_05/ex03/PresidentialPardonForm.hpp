@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 15:55:39 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/17 17:06:38 by tcampbel         ###   ########.fr       */
+/*   Created: 2024/10/17 11:34:42 by tcampbel          #+#    #+#             */
+/*   Updated: 2024/10/17 16:46:11 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "AForm.hpp"
-#include "Bureaucrat.hpp"
-#include <fstream>
-#include <iostream>
 
 class Bureaucrat;
 
-class ShrubberyCreationForm : public AForm
+class PresidentialPardonForm : public AForm
 {
 private:
 	std::string target;
 public:
-	ShrubberyCreationForm();
-	ShrubberyCreationForm(std::string t);
-	ShrubberyCreationForm(const ShrubberyCreationForm& copy);
-	~ShrubberyCreationForm();
-	const ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
+	PresidentialPardonForm();
+	PresidentialPardonForm(std::string t);
+	PresidentialPardonForm(const PresidentialPardonForm& copy);
+	~PresidentialPardonForm();
+	const PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
 	void		beSigned(const Bureaucrat& b) override;
-	void		makeShrubbery(std::string target);
+	void		PresidentialPardon(const Bureaucrat& b);
+	std::string	getTarget();
 };

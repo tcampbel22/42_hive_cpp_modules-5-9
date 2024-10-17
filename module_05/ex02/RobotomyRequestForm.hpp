@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 15:55:39 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/17 17:06:38 by tcampbel         ###   ########.fr       */
+/*   Created: 2024/10/17 10:46:16 by tcampbel          #+#    #+#             */
+/*   Updated: 2024/10/17 16:40:56 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,20 @@
 
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include <fstream>
-#include <iostream>
 
 class Bureaucrat;
 
-class ShrubberyCreationForm : public AForm
+class RobotomyRequestForm : public AForm
 {
 private:
-	std::string target;
+	std::string	target;
 public:
-	ShrubberyCreationForm();
-	ShrubberyCreationForm(std::string t);
-	ShrubberyCreationForm(const ShrubberyCreationForm& copy);
-	~ShrubberyCreationForm();
-	const ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
-	void		beSigned(const Bureaucrat& b) override;
-	void		makeShrubbery(std::string target);
+	RobotomyRequestForm();
+	RobotomyRequestForm(std::string t);
+	RobotomyRequestForm(const RobotomyRequestForm& copy);
+	~RobotomyRequestForm();
+	const RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
+	void						beSigned(const Bureaucrat& b) override;
+	void						Robotomize(const Bureaucrat& b);
+	std::string					getTarget();
 };

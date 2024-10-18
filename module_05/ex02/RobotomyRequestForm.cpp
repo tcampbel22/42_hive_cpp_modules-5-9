@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 11:01:08 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/17 17:11:29 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/18 12:06:20 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ const RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestF
 	return *this;
 }
 
-
-void	RobotomyRequestForm::Robotomize(const Bureaucrat& b) 
+void	RobotomyRequestForm::Robotomize(const Bureaucrat& b) const
 {
 	std::srand(std::time(0));
 	std::cout << "!*!*!*!LOUD DRILLING NOISES!*!*!*!*!*!\n";
@@ -46,12 +45,16 @@ void	RobotomyRequestForm::Robotomize(const Bureaucrat& b)
 		std::cout << "Robotomy has failed\n*!*!*!SAD BEEPING NOISES!*!*!*!*\n";
 }
 
+void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
+{
+	AForm::execute(executor);
+	Robotomize(executor);
+}
+
 void	RobotomyRequestForm::beSigned(const Bureaucrat& b) 
 {
 	if (b.getGrade() > getAGradeSign())
 		throw GradeTooLowException("Grade to low to sign!");
 	setSigned(true);
-	execute(b);
-	setExecuted(true);
-	Robotomize(b);
+	std::cout << getAName() << " signed by " << b.getName() << std::endl;
 }

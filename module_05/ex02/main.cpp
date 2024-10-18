@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:58:30 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/17 17:03:14 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/18 11:43:17 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ int	main()
 		Shrub.beSigned(Bob);
 		Robot.beSigned(Mary);
 		Zaphod.beSigned(Tom);
+
+		Shrub.execute(Bob);
+		Robot.execute(Mary);
+		Zaphod.execute(Tom);
+		// Shrub.execute(Bob);
 		
 		std::cout << "\n*****BUREAUCRAT SIGNING FORMS*****\n\n";
 		Bob.signForm(Shrub);

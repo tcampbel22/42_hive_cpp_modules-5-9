@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 10:46:16 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/17 16:40:56 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/18 11:26:02 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ public:
 	~RobotomyRequestForm();
 	const RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 	void						beSigned(const Bureaucrat& b) override;
-	void						Robotomize(const Bureaucrat& b);
+	void						execute(Bureaucrat const & executor) const override;
+	void						Robotomize(const Bureaucrat& b) const;
 	std::string					getTarget();
 };

@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 11:34:42 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/17 16:46:11 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/18 11:27:39 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ public:
 	~PresidentialPardonForm();
 	const PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
 	void		beSigned(const Bureaucrat& b) override;
-	void		PresidentialPardon(const Bureaucrat& b);
+	void		PresidentialPardon(const Bureaucrat& b) const;
+	void		execute(Bureaucrat const & executor) const override;
 	std::string	getTarget();
 };

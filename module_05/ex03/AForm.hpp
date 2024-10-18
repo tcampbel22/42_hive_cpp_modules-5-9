@@ -24,7 +24,7 @@ class AForm
 private:
 	const std::string	name;
 	bool				isSigned;
-	bool				isExec;
+	mutable bool		isExec;
 	const int			gradeSign;
 	const int			gradeExec;
 public:
@@ -38,10 +38,10 @@ public:
 	int					getAGradeSign() const;
 	int					getAGradeExec() const;
 	bool				getAIsExec() const;
-	void				setExecuted(bool exec);
+	void				setExecuted(bool exec) const;
 	void				setSigned(bool sign);
 	virtual void		beSigned(const Bureaucrat& bureaucrat) = 0;
-	void				execute(Bureaucrat const & executor) const;
+	virtual void		execute(Bureaucrat const & executor) const = 0;
 };
 
 std::ostream& operator<<(std::ostream& stream, AForm const& Aform);

@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:58:30 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/17 17:24:11 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/18 12:01:35 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,49 +23,54 @@ int	main()
 {
 	try 
 	{
-		// Bureaucrat	Bob("Bob", 135); 
-		// Bureaucrat	Mary("Mary", 44);
-		// Bureaucrat	Tom("Tom", 4);
+		Bureaucrat	Tom("Tom", 100);
+		Bureaucrat	Roboto("Roboto", 40);
+		Bureaucrat	Bob("Bob", 4);
 		
-		// std::cout << "**********************\n\n";
-		// ShrubberyCreationForm	Shrub("Bob"); //Grade 145 Exec 137
-		// RobotomyRequestForm		Robot("Mary"); //Grade 72 Exec 45
-		// PresidentialPardonForm	Zaphod("Tom"); //Grade 25 Exec 5
 		
-		// std::cout << "\n*****BUREAUCRAT INFO*****\n\n";
-		// std::cout << Mary;
-		// std::cout << Bob;
-		// std::cout << "\n*****FORM INFO*****\n\n";
-		// std::cout << Shrub;
-		// std::cout << Robot;
-		// std::cout << Zaphod;
-
-		// Shrub.beSigned(Bob);
-		// Robot.beSigned(Mary);
-		// Zaphod.beSigned(Tom);
-		
-		// std::cout << "\n*****BUREAUCRAT SIGNING FORMS*****\n\n";
-		// Bob.signForm(Shrub);
-		// Mary.signForm(Robot);
-		// Tom.signForm(Zaphod);
-
-		// std::cout << "\n*****BUREAUCRAT EXECUTING FORMS*****\n\n";
-		// Bob.executeForm(Shrub);
-		// Mary.executeForm(Robot);
-		// Tom.executeForm(Zaphod);
-		
-		// std::cout << "\n*****FORM STATUS POST-SIGNING*****\n\n";
-		// std::cout << Shrub;
-		// std::cout << Robot;
-		// std::cout << Zaphod;
 		Intern RandomIntern;
-		AForm* tmp = RandomIntern.makeForm("PresidentialPardonForm", "Bob");
-
-		std::cout << *tmp;
-
-		delete tmp;
+		Intern OtherIntern;
+		Intern RoboticIntern;
 		
+		std::cout << "\n*****INTERNs CREATES FORMS****\n\n";
+		AForm*	Shrub = OtherIntern.makeForm("ShrubberyCreationForm", "Tom");
+		AForm*	Robot = RoboticIntern.makeForm("RobotomyRequestForm", "Roboto");
+		AForm*	President = RandomIntern.makeForm("PresidentialPardonForm", "Bob");
 		
+		std::cout << "\n*****CREATED FORMS INFO****\n\n";
+		std::cout << *Shrub;
+		std::cout << *Robot;
+		std::cout << *President;
+
+		std::cout << "\n*****FORMS SIGNING****\n\n";
+		Shrub->beSigned(Tom);
+		Robot->beSigned(Roboto);
+		President->beSigned(Bob);
+
+		std::cout << "\n*****FORMS EXECUTION****\n\n";
+		Shrub->execute(Tom);
+		Robot->execute(Roboto);
+		President->execute(Bob);
+		
+		std::cout << "\n*****BUREAUCRATS SIGNING FORMS****\n\n";
+		Tom.signForm(*Shrub);
+		Roboto.signForm(*Robot);
+		Bob.signForm(*President);
+			
+		std::cout << "\n*****BUREAUCRATS EXECUTING FORMS****\n\n";
+		Tom.executeForm(*Shrub);
+		Roboto.executeForm(*Robot);
+		Bob.executeForm(*President);
+		
+
+		std::cout << "\n*****CREATED FORMS INFO POST SIGNING/EXECUTION****\n\n";
+		std::cout << *Shrub;
+		std::cout << *Robot;
+		std::cout << *President;
+
+		delete Shrub;
+		delete Robot;
+		delete President;			
 	}
 	catch (GradeTooHighException& e)
 	{

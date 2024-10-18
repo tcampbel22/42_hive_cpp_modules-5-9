@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 11:38:03 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/17 17:11:44 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/18 12:05:52 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,22 @@ const PresidentialPardonForm& PresidentialPardonForm::operator=(const Presidenti
 std::string	PresidentialPardonForm::getTarget() { return target; }
 
 
-void		PresidentialPardonForm::PresidentialPardon(const Bureaucrat& b)
+void		PresidentialPardonForm::PresidentialPardon(const Bureaucrat& b) const
 {
 	std::cout << b.getName() << " has been pardoned by Zaphod Beeblebrox\n";
 }
+
+void		PresidentialPardonForm::execute(Bureaucrat const & executor) const
+{
+	AForm::execute(executor);
+	PresidentialPardon(executor);
+	setExecuted(true);
+}
+
 void		PresidentialPardonForm::beSigned(const Bureaucrat& b)
 {
 	if (b.getGrade() > getAGradeSign())
 		throw GradeTooLowException("Grade to low to sign!");
 	setSigned(true);
-	execute(b);
-	setExecuted(true);
-	PresidentialPardon(b);
+	std::cout << getAName() << " signed by " << b.getName() << std::endl;
 }

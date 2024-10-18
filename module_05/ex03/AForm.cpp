@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:38:34 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/17 17:10:20 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/18 11:38:01 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,27 @@ int					AForm::getAGradeExec() const { return gradeExec; }
 
 bool				AForm::getAIsExec() const { return isExec; }
 
-void				AForm::setExecuted(bool exec) { isExec = exec; }
+void				AForm::setExecuted(bool exec) const { isExec = exec; }
 
 void				AForm::setSigned(bool sign) { isSigned = sign; }
 
-void				AForm::execute(Bureaucrat const & executor) const
-{
-	if (executor.getGrade() > getAGradeExec())
-		throw GradeTooLowException("Grade to low to execute!");
-}
 
 void				AForm::beSigned(const Bureaucrat& b) 
 {
 	if (b.getGrade() > getAGradeSign())
 		throw GradeTooLowException("Grade to low to sign!");
 	isSigned = true;
+}
+
+void				AForm::execute(Bureaucrat const & executor) const
+{
+	if (isSigned == false)
+		throw std::invalid_argument("Form not signed and cannot be executed!");
+	if (isExec == true)
+		throw std::invalid_argument("Form has already been executed!");
+	if (executor.getGrade() > getAGradeExec())
+		throw GradeTooLowException("Grade to low to execute!");
+	setExecuted(true);
 }
 
 std::ostream& operator<<(std::ostream& stream, AForm const& Aform) 

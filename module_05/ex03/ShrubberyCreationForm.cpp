@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:24:28 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/17 17:02:04 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/18 12:06:08 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,20 @@ const ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCre
 	return *this;
 }
 
-void	ShrubberyCreationForm::makeShrubbery(std::string target) 
+void	ShrubberyCreationForm::makeShrubbery(std::string target) const
 {
 	std::ofstream file(target + "_shrubbery");
 	if (!file.is_open())
 					throw std::invalid_argument("File failed to be opened/created");
-	file << "        /\\\n       /**\\\n      /****\\\n     /******\\\n    /********\\\n   /**********\\\n  /____________\\\n      ||  ||\n      ||  ||\n      ||  ||\n";
+	file << "        /\\\n       /**\\\n      /****\\\n     /******\\\n    /********\\\n   /**********\\\n  /____________\\\n       |  |\n       |  |\n       |  |\n";
 	file.close();
+	std::cout << target << "'s shrubbery file has been executed\n";
+}
+
+void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+{
+	AForm::execute(executor);
+	makeShrubbery(executor.getName());
 }
 
 
@@ -45,7 +52,5 @@ void		ShrubberyCreationForm::beSigned(const Bureaucrat& b)
 	if (b.getGrade() > getAGradeSign())
 		throw GradeTooLowException("Grade to low to sign!");
 	setSigned(true);
-	execute(b);
-	setExecuted(true);
-	makeShrubbery(b.getName());
+	std::cout << getAName() << " signed by " << b.getName() << std::endl;
 }

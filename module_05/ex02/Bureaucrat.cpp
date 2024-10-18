@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:52:28 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/17 13:56:36 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/18 13:46:09 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ Bureaucrat::Bureaucrat() : name("Bob"), grade(150)
 {
 	if (grade > 150)
 		throw GradeTooLowException("Grade exceeds 150");
-	else if (grade < 0)
-		throw GradeTooHighException("Grade below 0");
+	else if (grade < 1)
+		throw GradeTooHighException("Grade below 1");
 }
 
 Bureaucrat::Bureaucrat(std::string newName, int newGrade) : name(newName), grade(newGrade) 
 {
 	if (grade > 150)
 		throw GradeTooLowException("Grade exceeds 150");
-	else if (grade < 0)
-		throw GradeTooHighException("Grade below 0");
+	else if (grade < 1)
+		throw GradeTooHighException("Grade below 1");
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& copy) : name(copy.name), grade(copy.grade) {}
@@ -46,8 +46,8 @@ int			Bureaucrat::getGrade() const { return this->grade; }
 void		Bureaucrat::incrementGrade()
 { 
 	this->grade--;
-	if (grade < 0)
-		throw GradeTooLowException("Grade below 0");
+	if (grade < 1)
+		throw GradeTooLowException("Grade below 1");
 }
 
 void		Bureaucrat::decrementGrade()
@@ -62,8 +62,8 @@ void		Bureaucrat::setGrade(int newGrade)
 	grade = newGrade; 
 	if (grade > 150)
 		throw GradeTooLowException("Grade exceeds 150");
-	else if (grade < 0)
-		throw GradeTooHighException("Grade below 0");
+	else if (grade < 1)
+		throw GradeTooHighException("Grade below 1");
 }
 
 void	Bureaucrat::signForm(const AForm& form) 

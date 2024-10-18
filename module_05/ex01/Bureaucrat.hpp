@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:52:10 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/16 17:23:34 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/18 13:44:49 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <iostream>
 #include "GradeTooHighException.hpp"
 #include "GradeTooLowException.hpp"
-#include "AForm.hpp"
+#include "Form.hpp"
 
 class Form;
 

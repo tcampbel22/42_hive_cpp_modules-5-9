@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:58:30 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/18 12:01:35 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:14:15 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@
 
 int	main()
 {
+	
+	AForm* Shrub = nullptr;
+	AForm* Robot = nullptr;
+	AForm* President = nullptr;
+	
 	try 
 	{
 		Bureaucrat	Tom("Tom", 100);
@@ -33,9 +38,9 @@ int	main()
 		Intern RoboticIntern;
 		
 		std::cout << "\n*****INTERNs CREATES FORMS****\n\n";
-		AForm*	Shrub = OtherIntern.makeForm("ShrubberyCreationForm", "Tom");
-		AForm*	Robot = RoboticIntern.makeForm("RobotomyRequestForm", "Roboto");
-		AForm*	President = RandomIntern.makeForm("PresidentialPardonForm", "Bob");
+		Shrub = OtherIntern.makeForm("ShrubberyCreationForm", "Tom");
+		Robot = RoboticIntern.makeForm("RobotomyRequestForm", "Roboto");
+		President = RandomIntern.makeForm("PresidentialPardonForm", "Bob");
 		
 		std::cout << "\n*****CREATED FORMS INFO****\n\n";
 		std::cout << *Shrub;
@@ -51,7 +56,7 @@ int	main()
 		Shrub->execute(Tom);
 		Robot->execute(Roboto);
 		President->execute(Bob);
-		
+		// Shrub->execute(Tom);
 		std::cout << "\n*****BUREAUCRATS SIGNING FORMS****\n\n";
 		Tom.signForm(*Shrub);
 		Roboto.signForm(*Robot);
@@ -61,27 +66,47 @@ int	main()
 		Tom.executeForm(*Shrub);
 		Roboto.executeForm(*Robot);
 		Bob.executeForm(*President);
-		
 
 		std::cout << "\n*****CREATED FORMS INFO POST SIGNING/EXECUTION****\n\n";
 		std::cout << *Shrub;
 		std::cout << *Robot;
 		std::cout << *President;
 
-		delete Shrub;
-		delete Robot;
-		delete President;			
+		if (Shrub) 
+			delete Shrub;
+		if (Robot)
+			delete Robot;
+		if (President)
+			delete President;			
 	}
 	catch (GradeTooHighException& e)
 	{
 		std::cerr << e.what() << std::endl;
+		if (Shrub) 
+			delete Shrub;
+		if (Robot)
+			delete Robot;
+		if (President)
+			delete President;
 	}
 	catch (GradeTooLowException& e)
 	{
 		std::cerr << e.what() << std::endl;
+		if (Shrub) 
+			delete Shrub;
+		if (Robot)
+			delete Robot;
+		if (President)
+			delete President;
 	}
 	catch (std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
+		if (Shrub) 
+			delete Shrub;
+		if (Robot)
+			delete Robot;
+		if (President)
+			delete President;
 	}
 }

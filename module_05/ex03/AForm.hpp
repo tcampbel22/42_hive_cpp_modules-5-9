@@ -41,7 +41,7 @@ public:
 	void				setExecuted(bool exec) const;
 	void				setSigned(bool sign);
 	virtual void		beSigned(const Bureaucrat& bureaucrat) = 0;
-	virtual void		execute(Bureaucrat const & executor) const = 0;
+	virtual void		execute(Bureaucrat const & executor) const;
 };
 
 std::ostream& operator<<(std::ostream& stream, AForm const& Aform);

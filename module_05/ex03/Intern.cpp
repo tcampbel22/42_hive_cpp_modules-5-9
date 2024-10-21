@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:03:45 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/17 17:23:32 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/21 13:53:56 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Intern::Intern() {}
 
-// Intern::Intern(const Intern& copy) {}
+Intern::Intern(const Intern& copy) { *this = copy; }
 
 Intern::~Intern() {}
 

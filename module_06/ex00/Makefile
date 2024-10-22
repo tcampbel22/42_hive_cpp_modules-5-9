@@ -5,7 +5,7 @@ FLAGS	:= -Wextra -Wall -Werror
 
 OBJ_DIR := Objects
 
-SRCS	:= main.cpp ScalarConverter.cpp
+SRCS	:= main.cpp ScalarConverter.cpp Printing.cpp
 		
 OBJS	:= $(addprefix $(OBJ_DIR)/, ${SRCS:.cpp=.o})
 

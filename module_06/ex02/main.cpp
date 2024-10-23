@@ -5,24 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 14:06:43 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/23 15:08:23 by tcampbel         ###   ########.fr       */
+/*   Created: 2024/10/23 18:11:25 by tcampbel          #+#    #+#             */
+/*   Updated: 2024/10/23 18:15:21 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
 
-int	main(int ac, char **av)
+int	main()
 {
 	try
 	{
-		if (ac != 2)
-			throw std::out_of_range("Incorrect arg amount");
-		// ScalarConverter bob;
-		ScalarConverter::convert((std::string)av[1]);
+		Base *base = generate();
+		identify(base);
+		// identify(base&);
 	}
-	catch(const std::exception& e)
+	catch (const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << '\n'; 
 	}
 }

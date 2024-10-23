@@ -5,24 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 14:06:43 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/23 15:08:23 by tcampbel         ###   ########.fr       */
+/*   Created: 2024/10/23 15:28:41 by tcampbel          #+#    #+#             */
+/*   Updated: 2024/10/23 17:34:30 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "Serializer.hpp"
 
-int	main(int ac, char **av)
+int	main()
 {
-	try
-	{
-		if (ac != 2)
-			throw std::out_of_range("Incorrect arg amount");
-		// ScalarConverter bob;
-		ScalarConverter::convert((std::string)av[1]);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	Data *data = new Data;
+	
+	uintptr_t ptr = Serializer::serialize(data);
+	
+	Data *data2 = Serializer::deserialize(ptr);
+
+	if (data == data2)
+		std::cout << "Success!\nData address: " << data << "\nData2 address: " << data2 << '\n'; 
+	else
+		std::cout << "BOOOOO! Addresses do not match\n";
+	delete data;
 }

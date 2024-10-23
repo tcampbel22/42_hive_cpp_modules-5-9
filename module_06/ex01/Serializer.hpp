@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 14:06:43 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/23 15:08:23 by tcampbel         ###   ########.fr       */
+/*   Created: 2024/10/23 15:21:26 by tcampbel          #+#    #+#             */
+/*   Updated: 2024/10/23 15:39:02 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#pragma once
 
-int	main(int ac, char **av)
+#include <cstdint>
+#include <iostream>
+
+struct Data
 {
-	try
-	{
-		if (ac != 2)
-			throw std::out_of_range("Incorrect arg amount");
-		// ScalarConverter bob;
-		ScalarConverter::convert((std::string)av[1]);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-}
+	uint num;
+};
+
+class Serializer
+{
+private:
+	Serializer();
+	Serializer(const Serializer& copy);
+	const Serializer& operator=(const Serializer& other);
+	~Serializer();
+public:
+	static	uintptr_t serialize(Data* ptr);
+	static	Data* deserialize(uintptr_t raw);
+};

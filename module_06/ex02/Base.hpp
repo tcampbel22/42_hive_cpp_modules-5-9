@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 14:06:43 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/23 15:08:23 by tcampbel         ###   ########.fr       */
+/*   Created: 2024/10/23 17:45:34 by tcampbel          #+#    #+#             */
+/*   Updated: 2024/10/23 18:01:47 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#pragma once
 
-int	main(int ac, char **av)
+#include <iostream>
+#include <ctime>
+
+class Base
 {
-	try
-	{
-		if (ac != 2)
-			throw std::out_of_range("Incorrect arg amount");
-		// ScalarConverter bob;
-		ScalarConverter::convert((std::string)av[1]);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-}
+	virtual ~Base();
+};
+
+Base*	generate(void);
+void	identify(Base* p);
+void	identify(Base& p);

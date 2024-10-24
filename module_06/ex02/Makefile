@@ -5,7 +5,7 @@ FLAGS	:= -Wextra -Wall -Werror
 
 OBJ_DIR := Objects
 
-SRCS	:= main.cpp IdentifyType.cpp
+SRCS	:= main.cpp Base.cpp A.cpp B.cpp C.cpp
 		
 OBJS	:= $(addprefix $(OBJ_DIR)/, ${SRCS:.cpp=.o})
 

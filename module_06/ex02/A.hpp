@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:46:13 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/23 18:07:59 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:24:14 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ class A : public Base
 {
 public:
 	A();
-	~A();
+	~A() override;
 };

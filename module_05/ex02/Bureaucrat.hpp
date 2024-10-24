@@ -6,15 +6,14 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:52:10 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/17 13:30:29 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:50:16 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
+#include <exception>
 #include "AForm.hpp"
 
 class AForm;
@@ -25,6 +24,23 @@ private:
 	const std::string 	name;
 	int					grade;
 public:
+	class GradeTooHighException : public std::exception
+	{
+	private:
+		std::string	message;
+	public:
+		GradeTooHighException(const char* msg);
+		const char*	what() const throw() override;
+	};
+	class GradeTooLowException : public std::exception
+	{
+	private:
+	std::string message;
+	public:
+	GradeTooLowException(const char* msg);
+	const char*	what() const throw() override;
+	};
+	
 	Bureaucrat();
 	Bureaucrat(std::string newName, int newGrade);
 	Bureaucrat(const Bureaucrat& copy);

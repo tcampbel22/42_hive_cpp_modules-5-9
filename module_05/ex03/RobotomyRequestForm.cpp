@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 11:01:08 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/18 12:06:05 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:55:31 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 void	RobotomyRequestForm::beSigned(const Bureaucrat& b) 
 {
 	if (b.getGrade() > getAGradeSign())
-		throw GradeTooLowException("Grade to low to sign!");
+		throw Bureaucrat::GradeTooLowException("Grade to low to sign!");
 	setSigned(true);
 	std::cout << getAName() << " signed by " << b.getName() << std::endl;
 }

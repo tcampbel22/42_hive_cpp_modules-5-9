@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 11:38:03 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/18 12:06:17 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:52:05 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void		PresidentialPardonForm::execute(Bureaucrat const & executor) const
 void		PresidentialPardonForm::beSigned(const Bureaucrat& b)
 {
 	if (b.getGrade() > getAGradeSign())
-		throw GradeTooLowException("Grade to low to sign!");
+		throw Bureaucrat::GradeTooLowException("Grade to low to sign!");
 	setSigned(true);
 	std::cout << getAName() << " signed by " << b.getName() << std::endl;
 }

@@ -6,14 +6,12 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:58:30 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/16 17:25:33 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:45:14 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
 
 int	main()
 {
@@ -30,11 +28,11 @@ int	main()
 		Bob.signForm(form1);
 		std::cout << form1;
 	}
-	catch (GradeTooHighException& e)
+	catch (Bureaucrat::GradeTooHighException& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	catch (GradeTooLowException& e)
+	catch (Bureaucrat::GradeTooLowException& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}

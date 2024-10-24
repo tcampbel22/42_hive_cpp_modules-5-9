@@ -6,20 +6,18 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:58:30 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/16 13:49:19 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:42:13 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
 
 int	main()
 {
 	try 
 	{
-		Bureaucrat Bob("Bob", 151);
-		Bureaucrat Bot("Bot", 0);
+		Bureaucrat Bob("Bob", 150);
+		Bureaucrat Bot("Bot", 1);
 
 		// Bob.setGrade(-1);
 		// Bob.setGrade(160);
@@ -29,11 +27,11 @@ int	main()
 		Bot.incrementGrade();
 		std::cout << Bot;
 	}
-	catch (GradeTooHighException& e)
+	catch (Bureaucrat::GradeTooHighException& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	catch (GradeTooLowException& e)
+	catch (Bureaucrat::GradeTooLowException& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}

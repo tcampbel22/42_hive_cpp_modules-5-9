@@ -6,14 +6,12 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:58:30 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/18 15:14:15 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:54:55 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
@@ -79,7 +77,7 @@ int	main()
 		if (President)
 			delete President;			
 	}
-	catch (GradeTooHighException& e)
+	catch (Bureaucrat::GradeTooHighException& e)
 	{
 		std::cerr << e.what() << std::endl;
 		if (Shrub) 
@@ -89,7 +87,7 @@ int	main()
 		if (President)
 			delete President;
 	}
-	catch (GradeTooLowException& e)
+	catch (Bureaucrat::GradeTooLowException& e)
 	{
 		std::cerr << e.what() << std::endl;
 		if (Shrub) 

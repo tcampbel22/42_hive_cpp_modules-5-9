@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:38:34 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/18 11:38:01 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:51:50 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void				AForm::setSigned(bool sign) { isSigned = sign; }
 void				AForm::beSigned(const Bureaucrat& b) 
 {
 	if (b.getGrade() > getAGradeSign())
-		throw GradeTooLowException("Grade to low to sign!");
+		throw Bureaucrat::GradeTooLowException("Grade to low to sign!");
 	isSigned = true;
 }
 
@@ -60,7 +60,7 @@ void				AForm::execute(Bureaucrat const & executor) const
 	if (isExec == true)
 		throw std::invalid_argument("Form has already been executed!");
 	if (executor.getGrade() > getAGradeExec())
-		throw GradeTooLowException("Grade to low to execute!");
+		throw Bureaucrat::GradeTooLowException("Grade to low to execute!");
 	setExecuted(true);
 }
 

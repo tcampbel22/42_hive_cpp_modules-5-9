@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:24:28 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/18 12:06:08 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:55:36 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 void		ShrubberyCreationForm::beSigned(const Bureaucrat& b)
 {
 	if (b.getGrade() > getAGradeSign())
-		throw GradeTooLowException("Grade to low to sign!");
+		throw Bureaucrat::GradeTooLowException("Grade to low to sign!");
 	setSigned(true);
 	std::cout << getAName() << " signed by " << b.getName() << std::endl;
 }

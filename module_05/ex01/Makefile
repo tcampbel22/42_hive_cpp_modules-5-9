@@ -3,7 +3,7 @@ NAME	:= Forms
 CC		:= c++
 FLAGS	:= -Wextra -Wall -Werror
 
-SRCS	:= main.cpp Bureaucrat.cpp GradeTooHighException.cpp GradeTooLowException.cpp Form.cpp
+SRCS	:= main.cpp Bureaucrat.cpp Form.cpp
 		
 OBJS	:= ${SRCS:.cpp=.o}
 

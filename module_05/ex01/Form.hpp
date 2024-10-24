@@ -6,15 +6,13 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:58:03 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/16 15:29:24 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:49:10 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;

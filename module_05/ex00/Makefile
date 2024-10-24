@@ -3,7 +3,7 @@ NAME	:= bureaucrat
 CC		:= c++
 FLAGS	:= -Wextra -Wall -Werror
 
-SRCS	:= main.cpp Bureaucrat.cpp GradeTooHighException.cpp GradeTooLowException.cpp
+SRCS	:= main.cpp Bureaucrat.cpp
 		
 OBJS	:= ${SRCS:.cpp=.o}
 

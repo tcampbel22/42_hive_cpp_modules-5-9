@@ -13,8 +13,6 @@
 #pragma once
 
 #include <iostream>
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;

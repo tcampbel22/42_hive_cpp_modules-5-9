@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:11:27 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/16 15:32:43 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:49:27 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int			Form::getGradeExec() const { return gradeExec; }
 void				Form::beSigned(const Bureaucrat& b) 
 {
 	if (b.getGrade() > getGradeSign())
-		throw GradeTooLowException("Grade to low to sign!");
+		throw Bureaucrat::GradeTooLowException("Grade to low to sign!");
 	isSigned = true;
 }
 

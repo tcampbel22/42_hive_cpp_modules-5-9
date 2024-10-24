@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:58:30 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/24 11:54:55 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:30:59 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,25 @@ int	main()
 	AForm* Shrub = nullptr;
 	AForm* Robot = nullptr;
 	AForm* President = nullptr;
+	// AForm* WrongForm = nullptr;
 	
 	try 
 	{
 		Bureaucrat	Tom("Tom", 100);
 		Bureaucrat	Roboto("Roboto", 40);
 		Bureaucrat	Bob("Bob", 4);
-		
+		// Bureaucrat	Wrong("Wrong", 1);
 		
 		Intern RandomIntern;
 		Intern OtherIntern;
 		Intern RoboticIntern;
+		// Intern WrongIntern;
 		
 		std::cout << "\n*****INTERNs CREATES FORMS****\n\n";
 		Shrub = OtherIntern.makeForm("ShrubberyCreationForm", "Tom");
 		Robot = RoboticIntern.makeForm("RobotomyRequestForm", "Roboto");
 		President = RandomIntern.makeForm("PresidentialPardonForm", "Bob");
+		// WrongForm = WrongIntern.makeForm("fghdfjgh", "Wrong");
 		
 		std::cout << "\n*****CREATED FORMS INFO****\n\n";
 		std::cout << *Shrub;

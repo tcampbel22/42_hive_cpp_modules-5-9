@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 14:03:45 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/22 11:09:13 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:38:49 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,24 @@ AForm*	Intern::makeForm(std::string form, std::string target)
 	std::string Forms[3] = { "ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm" };
 	
 	for (int i = 0; i < 3; i++)
+	{
 		if (form.compare(Forms[i]) == 0)
-			id = i;
-	
+			id = i + 1;
+	}
 	switch (id) 
 	{
-		case 0:
+		case 1:
 			tmp =  new ShrubberyCreationForm(target);
 			break ;
-		case 1:
+		case 2:
 			tmp = new RobotomyRequestForm(target);
 			break ;
-		case 2:
+		case 3:
 			tmp = new PresidentialPardonForm(target);
 			break ;
 		default:
-			std::cout << "Failed to create form " << form << std::endl;
+			throw std::out_of_range("Failed to create form " + form);
 	}
-	if (tmp != nullptr)
-		std::cout << "Intern creates " << Forms[id] << std::endl;
+	std::cout << "Intern creates " << form << std::endl;
 	return tmp;
 }

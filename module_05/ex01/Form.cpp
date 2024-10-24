@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:11:27 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/24 11:49:27 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:49:44 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Form::~Form() {}
 const Form&	Form::operator=(const Form& other) 
 {
 	if (this != &other)
-		*this = Form(other);
+		isSigned = other.isSigned;
 	return *this;
 }
 

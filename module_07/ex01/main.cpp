@@ -1,53 +1,29 @@
 #include <iostream>
-#include <Array.hpp>
+#include "Iter.hpp"
+#include "Iter.tpp"
 
-#define MAX_VAL 750
-int main(int, char**)
+
+void	addOne(int&	x)
 {
-    Array<int> numbers(MAX_VAL);
-    int* mirror = new int[MAX_VAL];
-    srand(time(NULL));
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        const int value = rand();
-        numbers[i] = value;
-        mirror[i] = value;
-    }
-    //SCOPE
-    {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
-    }
+	x += 1;
+}
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        if (mirror[i] != numbers[i])
-        {
-            std::cerr << "didn't save the same value!!" << std::endl;
-            return 1;
-        }
-    }
-    try
-    {
-        numbers[-2] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    try
-    {
-        numbers[MAX_VAL] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+void printInt(int& x)
+{
+	std::cout << '[' << x << "] ";
+}
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        numbers[i] = rand();
-    }
-    delete [] mirror;//
-    return 0;
+int main()
+{
+	int	array[] = { 1, 2, 3, 4, 5 };
+	int len = 5;
+	Iter<int> IterInt;
+
+	std::cout << "Before:\n";
+	IterInt.iter(array, len, printInt);
+	IterInt.iter(array, len, addOne);
+	std::cout << "\nAfter:\n";
+	IterInt.iter(array, len, printInt);
+
+	return 0;
 }

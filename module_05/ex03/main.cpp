@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:58:30 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/24 14:30:59 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/25 15:10:58 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main()
 		// Intern WrongIntern;
 		
 		std::cout << "\n*****INTERNs CREATES FORMS****\n\n";
-		Shrub = OtherIntern.makeForm("ShrubberyCreationForm", "Tom");
+		Shrub = OtherIntern.makeForm("ShrubberyCeationForm", "Tom");
 		Robot = RoboticIntern.makeForm("RobotomyRequestForm", "Roboto");
 		President = RandomIntern.makeForm("PresidentialPardonForm", "Bob");
 		// WrongForm = WrongIntern.makeForm("fghdfjgh", "Wrong");

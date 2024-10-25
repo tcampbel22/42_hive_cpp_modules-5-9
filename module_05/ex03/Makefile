@@ -1,4 +1,4 @@
-NAME	:= Shrubbery
+NAME	:= Intern
 
 CC		:= c++
 FLAGS	:= -Wextra -Wall -Werror

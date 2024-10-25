@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:58:30 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/24 11:51:33 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/25 15:01:26 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	main()
 		// Shrub.execute(Bob);
 		
 		std::cout << "\n*****BUREAUCRAT SIGNING FORMS*****\n\n";
+		// Bob.setGrade(146);
 		Bob.signForm(Shrub);
 		Mary.signForm(Robot);
 		Tom.signForm(Zaphod);

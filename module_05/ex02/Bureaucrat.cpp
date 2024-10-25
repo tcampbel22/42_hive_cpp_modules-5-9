@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:52:28 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/24 11:51:10 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:54:11 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void		Bureaucrat::setGrade(int newGrade)
 
 void	Bureaucrat::signForm(const AForm& form) 
 {
-	if (form.getAIsSigned() == true)
+	if (form.getAIsSigned() == true && grade < form.getAGradeSign())
 		std::cout << name << " has signed form " << form.getAName() << std::endl;
 	else
 		std::cout << name << " hasn't signed form " << form.getAName() << " because of reasons\n";

@@ -1,7 +1,17 @@
 #include <iostream>
-#include <Array.hpp>
+#include "Array.hpp"
+#include "Array.tpp"
 
-#define MAX_VAL 750
+#define MAX_VAL 5
+
+std::ostream& operator<<(std::ostream& stream, int* intArray)
+{
+	for (uint i = 0; i < MAX_VAL; i++)
+		stream << intArray[i] << " ";
+	return stream;
+}
+
+
 int main(int, char**)
 {
     Array<int> numbers(MAX_VAL);
@@ -13,11 +23,20 @@ int main(int, char**)
         numbers[i] = value;
         mirror[i] = value;
     }
-    //SCOPE
+	Array<int> number2(2);
+	std::cout << "Number2: " << number2 << '\n';
+	number2 = numbers;
+	std::cout << "Numbers: " << numbers << '\n';
+	std::cout << "Mirror: " << mirror << '\n';
+	std::cout << "Number2: " << number2 << '\n';
+    
+	//Testing copy constructor and operator= further
     {
         Array<int> tmp = numbers;
         Array<int> test(tmp);
-    }
+		std::cout << "\ntmp: " << tmp << '\n';
+		std::cout << "test: " << test << '\n';
+	}
 
     for (int i = 0; i < MAX_VAL; i++)
     {
@@ -26,6 +45,8 @@ int main(int, char**)
             std::cerr << "didn't save the same value!!" << std::endl;
             return 1;
         }
+		else
+			std::cout << "Values at index [" << i << "] are the same!\n";
     }
     try
     {
@@ -48,6 +69,6 @@ int main(int, char**)
     {
         numbers[i] = rand();
     }
-    delete [] mirror;//
+    delete [] mirror;
     return 0;
 }

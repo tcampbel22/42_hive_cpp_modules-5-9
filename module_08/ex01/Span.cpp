@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 12:08:37 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/28 14:57:27 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/28 17:58:44 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,23 @@ uint	Span::shortestSpan()
 		throw std::invalid_argument("Not enough numbers in array");
 	else
 	{
+		sort(spanVector.begin(), spanVector.end());
+		
 		
 	}
 }
 
-uint	Span::longestSpan() {}
+uint	Span::longestSpan() 
+{
+	if (spanVector.size() <= 1)
+		throw std::invalid_argument("Not enough numbers in array");
+	else
+	{
+		std::vector<int>::iterator max = std::max_element(spanVector.begin(), spanVector.end());
+		std::vector<int>::iterator min = std::min_element(spanVector.begin(), spanVector.end());
+		// std::cout << "Max: " << *max << " Min: " << *min << "\nResult: " << *max - *min << '\n';
+		return *max - *min;
+	}
+}
 
-void	Span::addAllTheNumbers(int numAmount) {}
+// void	Span::addAllTheNumbers(int numAmount) {}

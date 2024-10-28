@@ -5,7 +5,7 @@ FLAGS	:= -Wextra -Wall -Werror
 
 OBJ_DIR := Objects
 
-SRCS	:= main.cpp
+SRCS	:= main.cpp Span.cpp
 		
 OBJS	:= $(addprefix $(OBJ_DIR)/, ${SRCS:.cpp=.o})
 

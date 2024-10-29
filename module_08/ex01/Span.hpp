@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:09:00 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/28 17:56:36 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/29 12:07:57 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,13 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <numeric>
+
 class Span
 {
 private:
-	std::vector<int>	spanVector;
+	uint				limit;
+	std::vector<uint>	spanVector;
 public:
 	Span();
 	Span(uint N);
@@ -28,5 +31,5 @@ public:
 	void	addNumber(uint num);
 	uint	shortestSpan(); //smallest difference between 2 numbers
 	uint	longestSpan(); //largest difference between 2 numbers
-	// void	addAllTheNumbers(int numAmount);
+	void	addAllTheNumbers(uint numAmount);
 };

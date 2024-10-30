@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Iter.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 13:10:47 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/24 16:08:22 by tcampbel         ###   ########.fr       */
+/*   Created: 2024/10/30 11:57:04 by tcampbel          #+#    #+#             */
+/*   Updated: 2024/10/30 11:57:54 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "MutantStack.hpp"
+#include "MutantStack.tpp"
 
-template <typename T, typename F>
-void	iter(T* address, int len, F function) 
+int	main()
 {
-	for (int i = 0; i < len; i++)
-		function(address[i]);
-};
+	
+}

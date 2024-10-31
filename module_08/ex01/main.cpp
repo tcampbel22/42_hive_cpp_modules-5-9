@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:36:48 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/29 12:19:35 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/31 15:41:45 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,22 @@ int main()
 	try 
 	{
 
-		Span 	span1(100);
-		Span 	span2(10);
-		Span	span3(3);
+		Span 	span1(10000);
 		
-		span1.addAllTheNumbers(100);
+		span1.addAllTheNumbers(10000);
 		uint longest1 = span1.longestSpan();
 		uint shortest1 = span1.shortestSpan();
-
 		
+		std::cout << "***Span1***\n\nLongest: " << longest1 << "\nShortest: " << shortest1 << "\n\n";
+	}
+	catch (std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	try
+	{
+		Span 	span2(10);
+	
 		span2.addNumber(10);
 		span2.addNumber(20457);
 		span2.addNumber(11);
@@ -41,13 +48,19 @@ int main()
 		uint shortest2 = span2.shortestSpan();
 
 		
-		std::cout << "***Span1***\n\nLongest: " << longest1 << "\nShortest: " << shortest1 << "\n\n";
 		std::cout << "***Span2***\n\nLongest: " << longest2 << "\nShortest: " << shortest2 << "\n\n";
-
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		Span	span3(3);
 		span3.addAllTheNumbers(10);
 	}
-	catch (std::exception& e)
+	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << e.what() << '\n';
 	}
 }

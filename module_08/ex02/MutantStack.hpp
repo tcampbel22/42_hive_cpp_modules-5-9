@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:58:18 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/30 17:52:29 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/31 17:54:40 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,27 @@
 #include <iostream>
 #include <vector>
 
-template<typename T>
+template<typename T, template <typename, typename> class Container = std::vector>
 class MutantStack
 {
 private:
-	std::vector<T>	stack;
+	Container <T, std::allocator<T>> mutantStack;
 public:
 	MutantStack();
 	MutantStack(const MutantStack& copy);
 	const MutantStack&	operator=(const MutantStack& other);
 	~MutantStack();
-	void	pop() const; //removes the top element
-	bool	empty() const; //checks whether the container adaptor is empt
-	T*		top() const; //accesses the top element
-	size_t	size() const; //returns the number of elements
-	void	push(T& val) //inserts element at the top
-	class Iterator
-	{
-		private:
-			std::vector<T>::iterator vIt;
-		public:
-			Iterator();
-			Iterator(const Iterator& copy);
-			~Iterator();
-			
-	}
+	void 		push(const T& val);
+	void 		pop();
+	T&			top();
+	const T&	top() const;
+	bool		empty() const;
+	size_t		size() const;
+
+	typename Container<T, std::allocator<T>>::iterator begin();
+	typename Container<T, std::allocator<T>>::iterator end();
+	typename Container<T, std::allocator<T>>::iterator begin() const;
+	typename Container<T, std::allocator<T>>::iterator end() const;
 };
 
+#include "MutantStack.tpp"

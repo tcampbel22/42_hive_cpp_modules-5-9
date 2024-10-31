@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 12:08:37 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/29 12:20:44 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/31 15:36:45 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,9 @@ uint	Span::longestSpan()
 
 void	Span::addAllTheNumbers(uint numAmount) 
 {
-	uint randNum;
-	
 	if (numAmount > limit)
 		throw std::out_of_range("Exceeds array limit");
+	std::srand(time(0));
 	while (spanVector.size() <= limit)
-	{
-		randNum = rand() % 100000;
-		spanVector.push_back(randNum);
-	}
+		spanVector.push_back((uint)rand());
 }

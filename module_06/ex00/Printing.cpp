@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 12:13:29 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/23 15:13:06 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/10/30 18:00:39 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void print_all(char c, long i, double f, long double d)
 	else
 		std::cout << "int: " << static_cast<int>(i) << std::endl;
 	
-	if (i > std::numeric_limits<int>::max() || i < std::numeric_limits<int>::min())
+	if (i > std::numeric_limits<float>::max() || i < std::numeric_limits<float>::min())
 		std::cout << "float: Impossible\n";
 	else
 		std::cout << "float: " << std::setprecision(1) << std::fixed << static_cast<float>(f) << "f" << std::endl;
 		
-	if (i >= std::numeric_limits<long long>::max() || i <= std::numeric_limits<long long>::min())
+	if (i > std::numeric_limits<double>::max() || i < std::numeric_limits<double>::min())
 		std::cout << "double: Impossible\n";
 	else
 		std::cout << "double: " << std::setprecision(1) << std::fixed << static_cast<double>(d) << std::endl;

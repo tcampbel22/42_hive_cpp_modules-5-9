@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:58:18 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/11/01 14:29:13 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/11/01 15:30:39 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ public:
 	const MutantStack&	operator=(const MutantStack& other);
 	~MutantStack();
 
-	using std::stack<T>::c;
 	using iterator = typename std::deque<T>::iterator;
 	using const_iterator = typename std::deque<T>::const_iterator;
 	iterator begin();

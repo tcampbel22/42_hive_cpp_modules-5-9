@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 18:36:27 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/23 14:53:54 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/11/05 11:39:56 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,11 @@ bool	isInt(const std::string literal)
 bool	isFloat(const std::string literal)
 {
 	const char*	temp = literal.c_str();
-	char *end;
+	char 		*end;
+	char		secondLast = literal[literal.size() - 2];
 	if (!literal.compare("0.0f") || !literal.compare("-0.0f") || !literal.compare("+0.0f"))
 		return true;
-	else if (std::strtod(temp, &end) && literal.back() == 'f'  && *end == '\0')
+	else if (literal.find('.') != std::string::npos && std::strtod(temp, &end) && literal.back() == 'f' && isdigit(secondLast))
 		return true;
 	return false;
 }
@@ -72,10 +73,11 @@ bool	isFloat(const std::string literal)
 bool	isDouble(const std::string literal)
 {
 	const char*	temp = literal.c_str();
-	char *end;
+	char 		*end;
+	char		secondLast = literal[literal.size() - 1];
 	if (!literal.compare("0.0") || !literal.compare("-0.0") || !literal.compare("+0.0"))
 		return true;
-	else if (literal.find('.') != std::string::npos && std::strtold(temp, &end) && *end == '\0')
+	else if (literal.find('.') != std::string::npos && std::strtold(temp, &end) && *end == '\0' && isdigit(secondLast))
 		return true;
 	return false;
 }

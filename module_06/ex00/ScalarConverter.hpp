@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 18:30:13 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/10/23 15:18:48 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/11/05 11:19:51 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <iostream>
 #include <limits>
 #include <iomanip>
+#include <cmath>
 
 enum e_type
 {

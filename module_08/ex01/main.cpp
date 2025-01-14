@@ -6,11 +6,12 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:36:48 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/11/01 15:19:51 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/11/13 17:15:59 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+#include <limits.h>
 
 int main()
 {
@@ -33,16 +34,16 @@ int main()
 	{
 		Span 	span2(10);
 	
-		span2.addNumber(10);
-		span2.addNumber(20457);
+		span2.addNumber(3);
+		span2.addNumber(-5);
 		span2.addNumber(11);
-		span2.addNumber(534);
-		span2.addNumber(8768);
-		span2.addNumber(204);
-		span2.addNumber(1);
-		span2.addNumber(980);
-		span2.addNumber(78);
-		span2.addNumber(29);
+		// span2.addNumber(534);
+		// span2.addNumber(8768);
+		// span2.addNumber(204);
+		// span2.addNumber(1);
+		// span2.addNumber(980);
+		// span2.addNumber(78);
+		// span2.addNumber(29);
 
 		uint longest2 = span2.longestSpan();
 		uint shortest2 = span2.shortestSpan();

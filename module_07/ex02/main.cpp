@@ -2,7 +2,7 @@
 #include "Array.hpp"
 #include "Array.tpp"
 
-#define MAX_VAL 5
+#define MAX_VAL 0
 
 std::ostream& operator<<(std::ostream& stream, int* intArray)
 {

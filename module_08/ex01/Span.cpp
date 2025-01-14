@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 12:08:37 by tcampbel          #+#    #+#             */
-/*   Updated: 2024/11/01 15:17:48 by tcampbel         ###   ########.fr       */
+/*   Updated: 2024/11/13 17:15:25 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ const Span& Span::operator=(const Span& other)
 	return *this;
 }
 
-void	Span::addNumber(uint num)
+void	Span::addNumber(int num)
 {
 	if (spanVector.size() <= limit)
 		spanVector.push_back(num);
@@ -44,11 +44,11 @@ uint	Span::shortestSpan()
 		throw std::invalid_argument("Not enough numbers in array");
 	else
 	{
-		std::vector<uint> diff(spanVector.size());
+		std::vector<int> diff(spanVector.size());
 		sort(spanVector.begin(), spanVector.end()); //sorts in ascending order
 		std::adjacent_difference(spanVector.begin(), spanVector.end(), diff.begin());
 		diff.erase(diff.begin());
-		std::vector<uint>::iterator min = std::min_element(diff.begin(), diff.end());
+		std::vector<int>::iterator min = std::min_element(diff.begin(), diff.end());
 		if (*min)
 			return *min;
 		else
@@ -62,9 +62,9 @@ uint	Span::longestSpan()
 		throw std::invalid_argument("Not enough numbers in array");
 	else
 	{
-		std::vector<uint>::iterator max = std::max_element(spanVector.begin(), spanVector.end());
-		std::vector<uint>::iterator min = std::min_element(spanVector.begin(), spanVector.end());
-		uint result = *max - *min;
+		std::vector<int>::iterator max = std::max_element(spanVector.begin(), spanVector.end());
+		std::vector<int>::iterator min = std::min_element(spanVector.begin(), spanVector.end());
+		int result = *max - *min;
 		if (result)
 			return result;
 		else
@@ -78,5 +78,5 @@ void	Span::addAllTheNumbers(uint numAmount)
 		throw std::out_of_range("Exceeds array limit");
 	std::srand(time(0));
 	while (spanVector.size() <= limit)
-		spanVector.push_back((uint)rand());
+		spanVector.push_back((int)rand());
 }

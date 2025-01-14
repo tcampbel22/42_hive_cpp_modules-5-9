@@ -1,7 +1,7 @@
 NAME	:= btc
 
 CC		:= c++
-FLAGS	:= -Wextra -Wall -Werror
+FLAGS	:= -Wextra -Wall -Werror -std=c++17
 
 OBJ_DIR := Objects
 

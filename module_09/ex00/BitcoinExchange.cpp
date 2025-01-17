@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:06:35 by tcampbel          #+#    #+#             */
-/*   Updated: 2025/01/17 14:17:22 by tcampbel         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:30:32 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,7 @@
 
 Bitcoin::Bitcoin(){}
 
-Bitcoin::~Bitcoin(){}
-
-// std::multimap<std::string, float>&	Bitcoin::getMap(e_map map) 
-// { 
-// 	if (map == DATABASE)
-// 		return dataBase; 
-// 	return exchange;
-// }
+Bitcoin::~Bitcoin() {}
 
 void	removeSpaces(std::string& str)
 {
@@ -35,7 +28,6 @@ void	removeSpaces(std::string& str)
 			it++;
 	}
 }
-
 
 bool	validFirstLine(std::string line, e_map map)
 {
@@ -75,7 +67,10 @@ void	Bitcoin::parseFile(std::string file, char delim, e_map map_type)
 			removeSpaces(rate);
 			float conv_rate = std::stod(rate);
 			if (map_type == DATABASE && !checkRateAndDate(conv_rate, date, DATABASE))
+			{
+				data.close();
 				exit(1);
+			}
 			if (map_type == DATABASE)
 				dataBase.insert({date, conv_rate});
 			else
@@ -90,7 +85,10 @@ void	Bitcoin::parseFile(std::string file, char delim, e_map map_type)
 		{
 			std::cerr << "error: invalid rate: " + rate << std::endl;
 			if (map_type == DATABASE)
+			{
+				data.close();
 				exit(1);
+			}
 		}
 	}
 	data.close();
@@ -138,7 +136,7 @@ bool	Bitcoin::validDate(std::string& date)
 		else if (month == FEB && (day > 28 || (isLeapYear(year) && day > 29)))
 			return false;
 	}
-	catch (std::exception& e)
+	catch (...)
 	{
 		return false;
 	}

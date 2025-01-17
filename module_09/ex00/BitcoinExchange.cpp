@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:06:35 by tcampbel          #+#    #+#             */
-/*   Updated: 2025/01/16 16:03:18 by tcampbel         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:17:22 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ Bitcoin::Bitcoin(){}
 
 Bitcoin::~Bitcoin(){}
 
-std::multimap<std::string, double>&	Bitcoin::getMap(e_map map) 
-{ 
-	if (map == DATABASE)
-		return dataBase; 
-	return exchange;
-}
+// std::multimap<std::string, float>&	Bitcoin::getMap(e_map map) 
+// { 
+// 	if (map == DATABASE)
+// 		return dataBase; 
+// 	return exchange;
+// }
 
 void	removeSpaces(std::string& str)
 {
-	std::regex spaces("[\\t\\r\\a\\t ]");
+	std::regex spaces("[\\t\\r ]");
 	for (auto it = str.begin(); it != str.end();)
 	{
 		std::string temp(1, *it);
@@ -49,14 +49,13 @@ bool	validFirstLine(std::string line, e_map map)
 
 void	Bitcoin::parseFile(std::string file, char delim, e_map map_type)
 {
-	std::multimap<std::string, double>& map = getMap(map_type);
-	std::string line, date, rate;
-	std::fstream data;
+	std::string		line, date, rate;
+	std::fstream	data;
 	data.open(file);
 	if (!data || (std::filesystem::exists(file) && std::filesystem::is_empty(file)))
 		throw std::runtime_error("File empty or failed to open");
 	if(!std::getline(data, line)) //skip first line
-		if (validFirstLine(line, map_type)) //checks if first is correct format
+		if (validFirstLine(line, map_type)) //checks if first line is correct format
 			throw std::runtime_error("error: first line invalid");
 	while (std::getline(data, line))
 	{
@@ -65,7 +64,7 @@ void	Bitcoin::parseFile(std::string file, char delim, e_map map_type)
 		{
 			if (map_type == EXCHANGE)
 			{
-				map.insert({date, -1});
+				std::cerr << "error: invalid date/rate format" << std::endl;
 				continue;
 			}
 			throw std::runtime_error("error: missing date, value or delimiter");
@@ -74,18 +73,44 @@ void	Bitcoin::parseFile(std::string file, char delim, e_map map_type)
 		{
 			removeSpaces(date);
 			removeSpaces(rate);
-			double conv_rate = std::stod(rate);
+			float conv_rate = std::stod(rate);
 			if (map_type == DATABASE && !checkRateAndDate(conv_rate, date, DATABASE))
 				exit(1);
-			map.insert({date, conv_rate});
+			if (map_type == DATABASE)
+				dataBase.insert({date, conv_rate});
+			else
+			{
+				if (!checkRateAndDate(conv_rate, date, EXCHANGE))
+					continue;
+				printExchange(date, conv_rate);
+			}
+				
 		}
-		catch (std::exception& e)
+		catch (...)
 		{
-			std::cerr << "error: " << e.what() << ": invalid format in file"<< std::endl;
-			exit(1);
+			std::cerr << "error: invalid rate: " + rate << std::endl;
+			if (map_type == DATABASE)
+				exit(1);
 		}
 	}
 	data.close();
+}
+
+void	Bitcoin::printExchange(std::string date, float rate)
+{
+	auto it = dataBase.lower_bound(date);
+	if (it->first != date)
+	{
+		if (it != dataBase.begin())
+			it--;
+		else
+		{
+			std::cerr << "error: no match found" << std::endl;
+			return;
+		}	
+	}
+	if (it != dataBase.end())
+		validSum(it->second, date, rate);
 }
 
 bool	isLeapYear(int year)
@@ -115,11 +140,11 @@ bool	Bitcoin::validDate(std::string& date)
 	}
 	catch (std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		return false;
 	}
 	return true;
 }
-bool	Bitcoin::checkRateAndDate(double rate, std::string date, e_map map)
+bool	Bitcoin::checkRateAndDate(float rate, std::string date, e_map map)
 {
 	if (!validDate(date))
 	{
@@ -134,26 +159,13 @@ bool	Bitcoin::checkRateAndDate(double rate, std::string date, e_map map)
 	return true;
 }
 
-void	Bitcoin::validSum(std::pair<std::string, double> db, std::pair<std::string, double> ex)
+void	Bitcoin::validSum(float db_price, std::string& date, float rate)
 {
-	if (db.second * ex.second > INT32_MAX)
-		std::cerr << "error: value too large" << std::endl;
-	else
-		 std::cout << ex.first + " => " << ex.second << " = " << db.second * ex.second << std::endl;
-}
-void	Bitcoin::printExchange(std::string inputfile) 
-{
-	// 2011-01-03 => 3 = 0.9 example of printed conversion
-	parseFile(inputfile, '|', EXCHANGE);
-	for (const auto& ex : this->exchange)
+	float value = db_price * rate;
+	if (value > 2147483647.0)
 	{
-		if (!checkRateAndDate(ex.second, ex.first, EXCHANGE))
-			continue;
-		for (const auto& db : this->dataBase)
-		{
-			auto it = exchange.lower_bound(db.first);
-			if (it != exchange.end())
-				validSum(db, ex);
-		}
+		std::cerr << "error: value too large" << std::endl;
+		return ;
 	}
+	std::cout << date + " => " << rate<< " = " << std::setprecision(1) << std::fixed << value << std::endl;
 }

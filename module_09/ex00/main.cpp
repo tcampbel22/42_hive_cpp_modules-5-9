@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:01:50 by tcampbel          #+#    #+#             */
-/*   Updated: 2025/01/16 11:31:13 by tcampbel         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:27:03 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int ac, char **av)
 	try
 	{
 		bitcoin.parseFile("data.csv", ',', DATABASE);
-		bitcoin.printExchange(av[1]);
+		bitcoin.parseFile(av[1], '|', EXCHANGE);
 	}
 	catch(const std::exception& e)
 	{

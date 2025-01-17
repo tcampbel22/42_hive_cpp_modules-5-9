@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:06:56 by tcampbel          #+#    #+#             */
-/*   Updated: 2025/01/16 15:51:47 by tcampbel         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:43:26 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,13 @@ enum e_map
 class Bitcoin
 {
 private:
-	std::multimap<std::string, double>	dataBase;
-	std::multimap<std::string, double>	exchange;
+	std::map<std::string, float>	dataBase;
 public:
 	Bitcoin();
 	~Bitcoin();
 	void							parseFile(std::string file, char delim, e_map map);
 	bool							validDate(std::string& date);
-	void							printExchange(std::string inputFile);
-	bool							checkRateAndDate(double rate, std::string date, e_map map);
-	void							validSum(std::pair<std::string, double> db, std::pair<std::string, double> ex);
-	std::multimap<std::string, double>&	getMap(e_map map);
+	bool							checkRateAndDate(float rate, std::string date, e_map map);
+	void							validSum(float db_price, std::string& date, float rate);
+	void							printExchange(std::string date, float rate);
 };

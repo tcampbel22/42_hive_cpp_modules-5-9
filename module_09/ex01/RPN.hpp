@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:36:05 by tcampbel          #+#    #+#             */
-/*   Updated: 2025/01/17 17:32:21 by tcampbel         ###   ########.fr       */
+/*   Updated: 2025/01/20 12:28:16 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ private:
 public:
 	RPN();
 	~RPN();
-	void	calculate(std::string operation);
-	void	parseOperation(std::string& operation);
+	void	parseOperation(std::string operation);
 	void	add();
 	void	subtract();
 	void	divide();

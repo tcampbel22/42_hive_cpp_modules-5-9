@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:35:57 by tcampbel          #+#    #+#             */
-/*   Updated: 2025/01/17 17:57:38 by tcampbel         ###   ########.fr       */
+/*   Updated: 2025/01/20 13:43:02 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,24 @@ RPN::RPN(){}
 
 RPN::~RPN(){}
 
-void	RPN::calculate(std::string operation)
+void	removeSpaces(std::string& str)
 {
-	parseOperation(operation);
+	std::regex spaces("[\\n\\t\\r ]");
+	for (auto it = str.begin(); it != str.end();)
+	{
+		std::string temp(1, *it);
+		if (std::regex_match(temp, spaces))
+			it = str.erase(it);
+		else
+			it++;
+	}
+	if (str.empty())
+		throw std::invalid_argument("error: empty argument");
 }
 
-void	RPN::parseOperation(std::string& operation)
+void	RPN::parseOperation(std::string operation)
 {
+	removeSpaces(operation);
 	for (char n : operation)
 	{
 		if (isdigit(n))
@@ -44,6 +55,7 @@ void	RPN::parseOperation(std::string& operation)
 				multiply();
 				break;
 			case ' ':
+				std::cout << "Here\n";
 				break;
 			default:
 				throw std::invalid_argument("error: invalid character");
@@ -71,11 +83,12 @@ void RPN::subtract()
 {
 	if (stack.size() <  2)
 		throw std::runtime_error("error: insufficient values to perform operation");
-	result = stack.top();
+	int top = stack.top();
 	stack.pop();
+	result = stack.top();
 	while (stack.size() != 0)
 	{
-		result -= stack.top();
+		result -= top;
 		stack.pop();
 	}
 	stack.push(result);

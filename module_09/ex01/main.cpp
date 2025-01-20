@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:36:53 by tcampbel          #+#    #+#             */
-/*   Updated: 2025/01/17 17:20:26 by tcampbel         ###   ########.fr       */
+/*   Updated: 2025/01/20 12:28:12 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int ac, char **av)
 		RPN rpn;
 		try 
 		{
-			rpn.calculate(av[1]);
+			rpn.parseOperation(av[1]);
 			return(0);
 		}
 		catch (std::exception& e)

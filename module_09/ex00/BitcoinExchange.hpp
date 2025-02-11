@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:06:56 by tcampbel          #+#    #+#             */
-/*   Updated: 2025/01/17 13:43:26 by tcampbel         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:55:08 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ private:
 	std::map<std::string, float>	dataBase;
 public:
 	Bitcoin();
+	Bitcoin(Bitcoin& copy);
+	Bitcoin& operator+(Bitcoin& other);
 	~Bitcoin();
 	void							parseFile(std::string file, char delim, e_map map);
 	bool							validDate(std::string& date);

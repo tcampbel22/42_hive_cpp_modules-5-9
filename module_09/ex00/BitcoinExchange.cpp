@@ -6,13 +6,21 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:06:35 by tcampbel          #+#    #+#             */
-/*   Updated: 2025/01/17 14:30:32 by tcampbel         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:56:53 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 Bitcoin::Bitcoin(){}
+
+Bitcoin::Bitcoin(Bitcoin& copy) : dataBase(copy.dataBase) {}
+Bitcoin& Bitcoin::operator+(Bitcoin& other) 
+{
+	if (this != &other)
+		dataBase = other.dataBase;
+	return *this;
+}
 
 Bitcoin::~Bitcoin() {}
 

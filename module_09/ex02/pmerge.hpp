@@ -6,7 +6,7 @@
 /*   By: tcampbel <tcampbel@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 15:00:27 by tcampbel          #+#    #+#             */
-/*   Updated: 2025/02/11 16:16:55 by tcampbel         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:11:48 by tcampbel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,33 @@
 
 #include <iostream>
 #include <vector>
-#include <deque>
+#include <list>
+#include <algorithm>
+#include <chrono>
 
 class Pmergeme
 {
 private:
 	std::vector<int> vec;
-	std::deque<int> deq;
+	std::list<int> lst;
 	std::vector<int> sort_vec;
-	std::deque<int> sort_deq;
-	double			vec_time = 0.0;
-	double			deq_time = 0.0;
+	std::list<int> sort_lst;
+	std::chrono::microseconds	vec_time;
+	std::chrono::microseconds	lst_time;
 public:
 	Pmergeme();
 	Pmergeme(Pmergeme& copy);
 	Pmergeme& operator=(Pmergeme& other);
 	~Pmergeme();
-	void	storeValues(char** values, int count);
-	void	printResult(int count);
-	void	vecSort();
-	void	deqSort();
+	void				storeValues(char** values, int count);
+	void				printResult(int count);
+	static void			vecSort(std::vector<int>& vec, std::vector<int>& sorted);
+	static void			lstSort(std::list<int>& lst, std::list<int>& sorted);
+	void				setVecTime(std::chrono::microseconds time);
+	void				setLstTime(std::chrono::microseconds time);
+	std::vector<int>&	getVec();
+	std::list<int>&		getLst();
+	std::vector<int>&	getSortVec();
+	std::list<int>&		getSortLst();
 };
 
